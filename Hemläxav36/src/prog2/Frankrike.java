@@ -1,20 +1,18 @@
 package prog2;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-public class Flaggor extends Application implements EventHandler<ActionEvent>{
+public class Frankrike extends Application{
 
-	Button knappen;
+
+
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -24,37 +22,36 @@ public class Flaggor extends Application implements EventHandler<ActionEvent>{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 	      
-		knappen = new Button("Hej");
-		knappen.setOnAction(this);
+	
 		
 	      Rectangle rec = new Rectangle();
 
  
 	      rec.setHeight(300);
-	      rec.setWidth(600);
+	      rec.setWidth(200);
 	      rec.setFill(Color.BLUE);
 	      
 	      
 	      Rectangle recgul1 = new Rectangle();
 	      
 	      recgul1.setHeight(300);
-	      recgul1.setWidth(58);
-	      recgul1.setFill(Color.YELLOW);
-	      recgul1.setX(150);
+	      recgul1.setWidth(200);
+	      recgul1.setFill(Color.WHITE);
+	      recgul1.setX(300);
 	      
 	      
 	      
 	      Rectangle recgul2 = new Rectangle();
 	      
-	      recgul2.setHeight(58);
-	      recgul2.setWidth(600);
-	      recgul2.setFill(Color.YELLOW);
-	      recgul2.setY(130);
+	      recgul2.setHeight(300);
+	      recgul2.setWidth(200);
+	      recgul2.setFill(Color.RED);
+	      recgul2.setX(400);
 	      
 	      
 	      
 	      
-	      HBox box = new HBox(knappen);
+	      HBox box = new HBox();
 
 	      
 	      Group root = new Group(rec, recgul1, recgul2);
@@ -63,20 +60,13 @@ public class Flaggor extends Application implements EventHandler<ActionEvent>{
 	      
 	      Scene scene = new Scene(box, 600, 300);
 	     
-	      primaryStage.setTitle("Drawing a Sweden"); 
+	      primaryStage.setTitle("Drawing a France"); 
 	      
 	      primaryStage.setScene(scene);
 	      
 	      primaryStage.show();
 	}
 
-	@Override
-	public void handle(ActionEvent event) {
-		if (event.getSource() == knappen)
-		{
-			
-		}
 		
 	}
 
-}
