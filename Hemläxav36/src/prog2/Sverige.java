@@ -14,10 +14,10 @@ import javafx.stage.Stage;
 
 public class Sverige extends Application implements EventHandler<ActionEvent> {
 
-	static Button sverige;
-	static Button schewiz;
-	static Button frankrike;
-	static Button tyskland;
+	static Button sverige = new Button("sverige");
+	static Button frankrike = new Button("frankrike");
+	static Button schewiz = new Button("schweiz");
+	static Button tyskland = new Button("tyskland");
 	static Stage stage;
 
 	public static void main(String[] args) {
@@ -27,15 +27,15 @@ public class Sverige extends Application implements EventHandler<ActionEvent> {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		primaryStage = stage;
+		stage = primaryStage  ;
 		
 		sverige.setOnAction(this);
 		tyskland.setOnAction(this);
-		sverige.setOnAction(this);
+		frankrike.setOnAction(this);
 		schewiz.setOnAction(this);
-		Group knappar = new Group(sverige, tyskland, sverige,schewiz);
+		Group knappar = new Group(frankrike, tyskland, sverige,schewiz);
 		sverige.setTranslateX(100);
-		sverige.setTranslateX(0);
+		frankrike.setTranslateX(0);
 		schewiz.setTranslateX(200);
 		tyskland.setTranslateX(300);
 		Scene scene = new Scene(knappar, 600, 300);
@@ -50,21 +50,21 @@ public class Sverige extends Application implements EventHandler<ActionEvent> {
 	public static void tyskland() {
 		Rectangle rec = new Rectangle();
 		rec.setTranslateY(50);
-		rec.setHeight(100);
-		rec.setWidth(600);
+		rec.setHeight(50);
+		rec.setWidth(500);
 		rec.setFill(Color.BLACK);
 
 		Rectangle recgul1 = new Rectangle();
 		rec.setTranslateY(50);
-		recgul1.setHeight(100);
-		recgul1.setWidth(600);
+		recgul1.setHeight(50);
+		recgul1.setWidth(500);
 		recgul1.setFill(Color.RED);
 		recgul1.setY(100);
 
 		Rectangle recgul2 = new Rectangle();
 		rec.setTranslateY(50);
-		recgul2.setHeight(100);
-		recgul2.setWidth(600);
+		recgul2.setHeight(50);
+		recgul2.setWidth(100);
 		recgul2.setFill(Color.YELLOW);
 		recgul2.setY(200);
 
@@ -192,6 +192,8 @@ public class Sverige extends Application implements EventHandler<ActionEvent> {
 		stage.setScene(scene);
 
 		stage.show();
+		
+		
 	}
 	public void frankrikeknappen(Stage knapp){
 		frankrike.setMinHeight(30);
