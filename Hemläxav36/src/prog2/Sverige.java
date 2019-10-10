@@ -268,7 +268,7 @@ public class Sverige extends Application implements EventHandler<ActionEvent> {
 			tyskland();
 		} else if (event.getSource() == schewiz) {
 			schewiz();
-		} else if (event.getSource() == sverige) {
+		} else if (event.getSource() == frankrike) {
 			frankrike();
 		}
 
