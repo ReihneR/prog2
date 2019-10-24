@@ -1,48 +1,47 @@
 package sample;
 import javafx.application.Application;
-
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    GridPane grid = new GridPane();
+    TextField fönster = new TextField();
 
-    char[] knappar = {'0','1','2','3','4','5','6','7','8','9'};
+    Button noll = new Button("0");
+    Button ett = new Button("1");
+    Button två = new Button("2");
+    Button tre = new Button("3");
+    Button fyra = new Button("4");
+    Button fem = new Button("5");
+    Button sex = new Button("6");
+    Button sju = new Button("7");
+    Button åtta = new Button("8");
+    Button nio = new Button("9");
+
+    VBox mainBox;
+    HBox rad1;
+    HBox rad2;
+    HBox rad3;
+    HBox rad4;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        rad1 = new HBox(0);
+        rad2 = new HBox(ett, två, tre);
+        rad3 = new HBox(fyra, fem, sex);
+        rad4 = new HBox(sju, åtta, nio);
 
-
-        grid.setHgap(100);
-        grid.setVgap(100);
-        grid.setPadding(new Insets(0, 10, 0, 0));
-        grid.gridLinesVisibleProperty().set(true);
-
-
-
-        HBox box = new HBox(grid);
-
+        mainBox = new VBox(rad1,rad2,rad3,rad4);
 
         primaryStage.setTitle("Miniräknare");
-        primaryStage.setScene(new Scene(box, 500, 550));
+        primaryStage.setScene(new Scene(mainBox, 500, 550));
         primaryStage.show();
-    }
-
-    public void knapparPlats(){
-        int buttonPlats = 0;
-        for(int rad = 0; rad <5; rad++) {
-            for(int column = 0; column < 3; column++) {
-                //grid.add(knappar.get(buttonPlats), column, rad);
-                buttonPlats++;
-                //if(buttonPlats == knappar.size())
-                break;
-            }
-        }
     }
 
     public static void main(String[] args) {
