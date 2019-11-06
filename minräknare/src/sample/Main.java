@@ -42,7 +42,9 @@ public class Main extends Application implements EventHandler<ActionEvent>{
         rad3 = new HBox(fyra, fem, sex);
         rad4 = new HBox(sju, åtta, nio);
 
-        mainBox = new VBox(fönster,rad1,rad2,rad3,rad4);
+        noll.setOnAction(this);
+
+        mainBox = new VBox(rad0,rad1,rad2,rad3,rad4);
 
         primaryStage.setTitle("Miniräknare");
         primaryStage.setScene(new Scene(mainBox, 500, 550));
