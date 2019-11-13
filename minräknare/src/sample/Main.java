@@ -17,7 +17,7 @@ public class Main extends Application implements EventHandler<ActionEvent>{
 
 
     TextField fönster = new TextField();
-    Button noll = new Button("0");
+
     Button ett = new Button("1");
     Button två = new Button("2");
     Button tre = new Button("3");
@@ -27,27 +27,48 @@ public class Main extends Application implements EventHandler<ActionEvent>{
     Button sju = new Button("7");
     Button åtta = new Button("8");
     Button nio = new Button("9");
+    Button noll = new Button("0");
+
+    Button addidtion = new Button("+");
+    Button subtraction = new Button("-");
+    Button multi = new Button("X");
+    Button summa = new Button("=");
 
     VBox mainBox;
-    HBox rad0;
+
     HBox rad1;
     HBox rad2;
     HBox rad3;
     HBox rad4;
+    HBox rad0;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
+
+
         rad0 = new HBox(fönster);
-        rad1 = new HBox(noll);
         rad2 = new HBox(ett, två, tre);
         rad3 = new HBox(fyra, fem, sex);
         rad4 = new HBox(sju, åtta, nio);
+        rad1 = new HBox(noll, addidtion, subtraction, summa);
 
         noll.setOnAction(this);
-
-        mainBox = new VBox(rad0,rad1,rad2,rad3,rad4);
+        ett.setOnAction(this);
+        två.setOnAction(this);
+        tre.setOnAction(this);
+        fyra.setOnAction(this);
+        fem.setOnAction(this);
+        sex.setOnAction(this);
+        sju.setOnAction(this);
+        åtta.setOnAction(this);
+        nio.setOnAction(this);
+        addidtion.setOnAction(this);
+        subtraction.setOnAction(this);
+        summa.setOnAction(this);
+        mainBox = new VBox(rad0,rad4,rad3,rad2,rad1);
 
         primaryStage.setTitle("Miniräknare");
-        primaryStage.setScene(new Scene(mainBox, 500, 550));
+        primaryStage.setScene(new Scene(mainBox, 300, 300));
         primaryStage.show();
 
     }
@@ -98,7 +119,64 @@ public class Main extends Application implements EventHandler<ActionEvent>{
         {
             fönster.textProperty().set(fönster.textProperty().get() + "9");
         }
+        if(actionEvent.getSource().equals(addidtion))
+        {
+            fönster.textProperty().set(fönster.textProperty().get() + "+");
+        }
+        if(actionEvent.getSource().equals(subtraction))
+        {
+            fönster.textProperty().set(fönster.textProperty().get() + "-");
+        }
+
+
+        if (actionEvent.getSource()== summa){
+            fönster.textProperty().set(calc()+"");
+        }
 
     }
+
+
+
+public int calc(){
+
+        String op = fönster.textProperty().get();
+        int summa = 0;
+
+        if(op.contains("+")){
+            String[] nummer = op.split("\\+");
+            int tal1 = Integer.parseInt(nummer[0]);
+            int tal2 = Integer.parseInt(nummer[1]);
+            summa = tal1 + tal2;
+
+
+        }
+
+
+    else if (op.contains("-")){
+        String[] nummer = op.split("\\-");
+        int tal1 = Integer.parseInt(nummer[0]);
+        int tal2 = Integer.parseInt(nummer[1]);
+        summa = tal1 - tal2;
+
+
+    }
+
+
+        else if (op.contains("-")){
+            String[] nummer = op.split("\\-");
+            int tal1 = Integer.parseInt(nummer[0]);
+            int tal2 = Integer.parseInt(nummer[1]);
+            summa = tal1 - tal2;
+
+
+        }
+
+
+    return summa;
+
+
+}
+
+
 }
 
