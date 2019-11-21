@@ -11,11 +11,7 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-
-
 public class Main extends Application implements EventHandler<ActionEvent>{
-
-
     TextField fönster = new TextField();
 
     Button ett = new Button("1");
@@ -33,9 +29,10 @@ public class Main extends Application implements EventHandler<ActionEvent>{
     Button subtraction = new Button("-");
     Button multi = new Button("X");
     Button summa = new Button("=");
+    Button clear = new Button("C");
+    Button dubble = new Button(".");
 
     VBox mainBox;
-
     HBox rad1;
     HBox rad2;
     HBox rad3;
@@ -47,10 +44,10 @@ public class Main extends Application implements EventHandler<ActionEvent>{
 
 
         rad0 = new HBox(fönster);
-        rad2 = new HBox(ett, två, tre);
-        rad3 = new HBox(fyra, fem, sex);
+        rad2 = new HBox(ett, två, tre, subtraction);
+        rad3 = new HBox(fyra, fem, sex, multi);
         rad4 = new HBox(sju, åtta, nio);
-        rad1 = new HBox(noll, addidtion, subtraction, summa);
+        rad1 = new HBox(noll, summa , clear, addidtion);
 
         noll.setOnAction(this);
         ett.setOnAction(this);
@@ -65,6 +62,8 @@ public class Main extends Application implements EventHandler<ActionEvent>{
         addidtion.setOnAction(this);
         subtraction.setOnAction(this);
         summa.setOnAction(this);
+        multi.setOnAction(this);
+        clear.setOnAction(this);
         mainBox = new VBox(rad0,rad4,rad3,rad2,rad1);
 
         primaryStage.setTitle("Miniräknare");
@@ -128,8 +127,15 @@ public class Main extends Application implements EventHandler<ActionEvent>{
             fönster.textProperty().set(fönster.textProperty().get() + "-");
         }
 
-
-        if (actionEvent.getSource()== summa){
+        if(actionEvent.getSource().equals(multi))
+        {
+            fönster.textProperty().set(fönster.textProperty().get() + "*");
+        }
+        if(actionEvent.getSource().equals(clear))
+        {
+            fönster.clear();
+        }
+        if (actionEvent.getSource() == summa){
             fönster.textProperty().set(calc()+"");
         }
 
@@ -137,44 +143,29 @@ public class Main extends Application implements EventHandler<ActionEvent>{
 
 
 
-public int calc(){
+public double calc(){
 
         String op = fönster.textProperty().get();
-        int summa = 0;
+        double summa = 0;
 
         if(op.contains("+")){
             String[] nummer = op.split("\\+");
-            int tal1 = Integer.parseInt(nummer[0]);
-            int tal2 = Integer.parseInt(nummer[1]);
+            double tal1 = Double.parseDouble(nummer[0]);
+            double tal2 = Double.parseDouble(nummer[1]);
             summa = tal1 + tal2;
-
-
-        }
-
-
-    else if (op.contains("-")){
-        String[] nummer = op.split("\\-");
-        int tal1 = Integer.parseInt(nummer[0]);
-        int tal2 = Integer.parseInt(nummer[1]);
-        summa = tal1 - tal2;
-
-
-    }
-
-
-        else if (op.contains("-")){
+        } else if (op.contains("-")){
             String[] nummer = op.split("\\-");
-            int tal1 = Integer.parseInt(nummer[0]);
-            int tal2 = Integer.parseInt(nummer[1]);
+            double tal1 = Double.parseDouble(nummer[0]);
+            double tal2 = Double.parseDouble(nummer[1]);
             summa = tal1 - tal2;
-
-
+        } else if (op.contains("*")){
+            String[] nummer = op.split("\\*");
+            double tal1 = Double.parseDouble(nummer[0]);
+            double tal2 = Double.parseDouble(nummer[1]);
+            summa = tal1 * tal2;
         }
 
-
-    return summa;
-
-
+   return summa;
 }
 
 
